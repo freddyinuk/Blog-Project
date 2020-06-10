@@ -17,6 +17,9 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(express.static("public"));
 
+app.get('/:topic', function(req, res){
+  console.log(req.params.topic)
+})
 app.get('/', function(req, res) {
   res.render('home', {
     home: homeStartingContent,

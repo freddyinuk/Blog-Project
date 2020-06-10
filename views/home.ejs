@@ -3,9 +3,10 @@
 <h1>Home</h1>
 <p><%= home %></p>
 
-<%for(let i = 0; i<publishPosts.length; i++){%>
-<%  console.log(publishPosts[i]['title'])%>
-<%};%>
+<%publishPosts.forEach(function(post){%>
+  <h1><%=post.title%></h1>
+  <p><%=post.post%></p>
+<%})%>
 
 
 <%- include('partials/footer') -%>
