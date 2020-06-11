@@ -8,6 +8,7 @@ const contactContent = "Scelerisque eleifend donec pretium vulputate sapien. Rho
 
 const posts = [];
 
+
 const app = express();
 
 app.set('view engine', 'ejs');
@@ -17,9 +18,6 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(express.static("public"));
 
-app.get('/:topic', function(req, res){
-  console.log(req.params.topic)
-})
 app.get('/', function(req, res) {
   res.render('home', {
     home: homeStartingContent,
@@ -39,11 +37,11 @@ app.get('/contact', function(req, res) {
   });
 });
 
-app.get('/compose', function(req, res){
+app.get('/compose', function(req, res) {
   res.render('compose');
 });
 
-app.post('/compose',function(req, res){
+app.post('/compose', function(req, res) {
   const post = {
     title: req.body.postTitle,
     post: req.body.postBody
@@ -52,9 +50,20 @@ app.post('/compose',function(req, res){
   res.redirect('/');
 });
 
+app.get('/:topic', function(req, res) {
+  console.log(req.params.topic);
+});
 
-
-
+app.get('/posts/:topic', function(req, res) {
+  for(var i = 0; i<posts.length; i++){
+    if (req.params.topic === posts[i]['title']) {
+      console.log('match found!')
+    } else {
+      console.log(posts[i]['title'])
+      console.log(posts)
+    }
+  }
+});
 
 
 
