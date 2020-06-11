@@ -5,7 +5,8 @@
 
 <%publishPosts.forEach(function(post){%>
   <h1><%=post.title%></h1>
-  <p><%=post.post%></p>
+  <p><%=post.post.substring(0,100) + '...'%><a href=/posts/<%=post.title.split(' ').join('-');%> >Read More</a></p>
+
 <%})%>
 
 
